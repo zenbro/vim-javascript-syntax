@@ -59,6 +59,11 @@ syntax match   javaScriptLineComment      "\/\/.*" contains=@Spell,javaScriptCom
 syntax match   javaScriptCommentSkip      "^[ \t]*\*\($\|[ \t]\+\)"
 syntax region  javaScriptComment          start="/\*"  end="\*/" contains=@Spell,javaScriptCommentTodo
 "}}}
+" Node.js Keywords {{{
+syntax keyword nodejsGlobal     global process exports
+syntax keyword nodejsTimers     setTimeout clearTimeout setInterval clearInterval setImmediate clearImmediate ref unref
+syntax keyword nodejsLocations  __dirname __filename
+"}}}
 " JSDoc support {{{
 if !exists("javascript_ignore_javaScriptdoc")
 	syntax case ignore
@@ -239,7 +244,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
 	HiLink javaScriptLabel                  Label
 	HiLink javaScriptSpecial                Special
 	HiLink javaScriptSource                 Special
-	HiLink javaScriptGlobalObjects          Special
+	HiLink javaScriptGlobalObjects          Typedef
 	HiLink javaScriptExceptions             Special
 
 	HiLink javaScriptDeprecated             Exception
@@ -274,7 +279,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
 	HiLink javaScriptFuncKeyword            Function
 	HiLink javaScriptFuncDef                PreProc
 	HiLink javaScriptFuncExp                Title
-	HiLink javaScriptFuncArg               	Special
+	HiLink javaScriptFuncArg                Label
 	HiLink javaScriptFuncComma              Operator
 	HiLink javaScriptFuncEq                 Operator
 
@@ -284,6 +289,10 @@ if version >= 508 || !exists("did_javascript_syn_inits")
 	HiLink javaScriptEventListenerKeywords  Type
 
 	HiLink javaScriptPropietaryObjects      Constant
+
+	HiLink nodejsGlobal                     Constant
+	HiLink nodejsTimers                     PreProc
+	HiLink nodejsLocations                  Todo
 
 	delcommand HiLink
 endif
